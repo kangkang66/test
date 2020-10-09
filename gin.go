@@ -13,7 +13,13 @@ func RunGin()  {
 		users := []map[string]interface{}{}
 		for _,uid := range RedisGetGoodUser() {
 			info := RedisGetUserInfo(uid)
-			ps := strings.Split(info.Basicinfo.Photos,",")
+			ps := strings.Split(info.Basicinfo.Avatar+","+info.Basicinfo.Photos,",")
+
+			intro := ""
+			for _,v := range info.Card {
+				intro += "【"+ v.Title+"】:"+v.Contenttext+"。"
+			}
+
 			users = append(users, map[string]interface{}{
 				"uid":info.Basicinfo.UID,
 				"nickname":info.Basicinfo.Nickname,
@@ -23,6 +29,7 @@ func RunGin()  {
 				"birthday":info.Basicinfo.Birthday,
 				"height":info.Basicinfo.Height,
 				"weight":info.Basicinfo.Weight,
+				"intro":intro,
 			})
 		}
 		c.HTML(200, "users.html",gin.H{
