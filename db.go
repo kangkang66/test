@@ -104,4 +104,16 @@ func RedisAddBlockUser(uid string)  {
 	}
 }
 
+func RedisSetIp(newIp string) (oldIp string, err error) {
+	oldIp,err = RedisClient.GetSet("ip",newIp).Result()
+	if err == redis.Nil {
+		err = nil
+	}
+	if err != nil {
+		log.Println("RedisSetIp",err)
+		return "", err
+	}
+	return
+}
+
 

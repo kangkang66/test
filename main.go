@@ -14,7 +14,6 @@ func main()  {
 func getGoodUsers()  {
 	for {
 		goodUsers := []*User{}
-
 		ru := RecommendListGoodUser()
 		goodUsers = append(goodUsers, ru...)
 		du := DynamicListGoodUser()
@@ -27,8 +26,11 @@ func getGoodUsers()  {
 			}
 			RedisAddGoodUser(u.Basicinfo.UID)
 		}
-
 		log.Println("合格用户:", len(goodUsers))
-		time.Sleep(10 * time.Minute)
+
+		//同步外网ip
+		SyncIp()
+
+		time.Sleep(30 * time.Minute)
 	}
 }
