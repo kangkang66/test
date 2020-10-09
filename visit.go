@@ -2,13 +2,15 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
+	"time"
 )
 
 func GetVisitors() (resp *ResponseVistors) {
 	path := "https://mini.tuodan.tech/jstd-doger/app/user/visitors"
-	data := `{"before":1602149710438,"size":10}`
+	data := fmt.Sprintf(`{"before":%d,"size":10}`,time.Now().Unix()*1000)
 	content,err := sendRequest(http.MethodPost, path, data)
 	if err != nil {
 		return
@@ -19,5 +21,6 @@ func GetVisitors() (resp *ResponseVistors) {
 		log.Println(err)
 		return
 	}
+	fmt.Println(resp.Data.Visitors)
 	return
 }
