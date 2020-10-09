@@ -7,13 +7,13 @@ import (
 	"net/http"
 )
 
-func AddCollect(uid string)  {
+func AddCollect(uid string) (resp *ResponseCollect) {
 	path := fmt.Sprintf("https://mini.tuodan.tech/jstd-doger/app/collect/v2/add/%s",uid)
 	content,err := sendRequest(http.MethodPost, path, "")
 	if err != nil {
 		return
 	}
-	resp := new(ResponseCollect)
+	resp = new(ResponseCollect)
 	err = json.Unmarshal(content, resp)
 	if err != nil {
 		log.Println(err)

@@ -37,6 +37,7 @@ func DynamicListGoodUser() (goodUser []*User) {
 				if err != nil {
 					continue
 				}
+				RedisAddUser(user)
 				if isGoodUser(user) {
 					goodUser = append(goodUser, user)
 				}

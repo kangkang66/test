@@ -1,5 +1,10 @@
 package main
 
+import (
+	"encoding/json"
+	"log"
+)
+
 type User struct {
 	ID               int         `json:"id"`
 	UserID           int         `json:"userId"`
@@ -131,6 +136,16 @@ type User struct {
 	Createtime             int         `json:"createtime"`
 	GetNewUserGift         interface{} `json:"getNewUserGift"`
 	AvatarAuth             interface{} `json:"avatarAuth"`
+}
+
+func (u *User) ToJson() (jb []byte) {
+	var err error
+	jb,err = json.Marshal(u)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	return
 }
 
 type ResponseRecommendList struct {

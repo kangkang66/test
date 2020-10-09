@@ -32,6 +32,7 @@ func RecommendListGoodUser() (goodUser []*User) {
 			continue
 		}
 		for _,user := range list.Data {
+			RedisAddUser(user)
 			if isGoodUser(user) {
 				goodUser = append(goodUser, user)
 			}
@@ -59,7 +60,7 @@ func isGoodUser(user *User) (is bool) {
 	goodHomelandProvince := "安徽"
 	goodBirthday	:= 1993
 	goodHeight	:= 160
-	goodHighestdegree := 1
+	goodHighestdegree := 2
 
 	//家乡是安徽，年龄<=1993，身高>=160，学历<=本科
 	if user.Basicinfo.HomelandProvince == goodHomelandProvince &&
