@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/go-redis/redis"
 	"log"
 	"time"
@@ -42,6 +43,7 @@ func RedisAddUser(user *User)  {
 }
 
 func RedisGetUserInfo(uid string) (info *User) {
+	info = new(User)
 	c,err := RedisClient.HGet("users",uid).Bytes()
 	if err != nil {
 		log.Println(err)
@@ -52,15 +54,16 @@ func RedisGetUserInfo(uid string) (info *User) {
 	return
 }
 
-func RedisAddGoodUser(user *User) (err error) {
+func RedisAddGoodUser(uid string) (err error) {
 	member := redis.Z{
 		Score:  float64(time.Now().Unix()),
-		Member: user.Basicinfo.UID,
+		Member: uid,
 	}
-	err = RedisClient.ZAddNX("good_users", member).Err()
+	err = RedisClient.ZAdd("good_users", member).Err()
 	if err != nil {
 		log.Println(err)
 	}
+	fmt.Println(err)
 	return
 }
 
@@ -73,7 +76,9 @@ func RedisDelGoodUser(uid string)  {
 }
 
 func RedisGetGoodUser() (data []string) {
-	data,err := RedisClient.ZRevRange("good_users", 0, -1).Result()
+	data = []string{}
+	var err error
+	data,err = RedisClient.ZRevRange("good_users", 0, -1).Result()
 	if err != nil {
 		log.Println(err)
 		return
@@ -82,9 +87,9 @@ func RedisGetGoodUser() (data []string) {
 }
 
 
-func RedisCheckBlockUser(user *User) (exist bool) {
+func RedisCheckBlockUser(uid string) (exist bool) {
 	var err error
-	exist,err = RedisClient.SIsMember("block_users", user.Basicinfo.UID).Result()
+	exist,err = RedisClient.SIsMember("block_users", uid).Result()
 	if err != nil {
 		log.Println(err)
 		return

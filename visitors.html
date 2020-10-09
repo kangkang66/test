@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visitors</title>
+</head>
+<body>
+
+<ul>
+    <li><a href="/good-users">查看优秀用户</a></li>
+    <li><a href="/vistors">查看浏览者</a></li>
+</ul>
+
+    <table border="1">
+        {{range .visitors}}
+        <tr>
+            <td>{{.Nickname}}</td>
+            <td><img src="{{.Avatar}}" width="100px" height="100px"> </td>
+            <td>{{.Birthday}}</td>
+            <td>{{.LivingCity}}</td>
+            <td>{{.LastVisitTime}}</td>
+        </tr>
+        {{end}}
+    </table>
+
+</body>
+</html>

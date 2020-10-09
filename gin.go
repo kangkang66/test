@@ -8,6 +8,7 @@ import (
 func RunGin()  {
 	r := gin.Default()
 	r.LoadHTMLGlob("./*.html")
+
 	r.GET("/good-users", func(c *gin.Context) {
 		users := []map[string]interface{}{}
 		for _,uid := range RedisGetGoodUser() {
@@ -28,6 +29,7 @@ func RunGin()  {
 			"users": users,
 		})
 	})
+
 	r.GET("/add-block", func(c *gin.Context) {
 		uid := c.Query("uid")
 		if uid  == "" {
@@ -51,5 +53,14 @@ func RunGin()  {
 		})
 	})
 
+	r.GET("/vistors", func(c *gin.Context) {
+		resp := GetVisitors()
+		c.HTML(200, "visitors.html",gin.H{
+			"visitors": resp.Data.Visitors,
+		})
+	})
+
+
 	r.Run(":8080")
 }
+
