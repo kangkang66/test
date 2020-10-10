@@ -30,6 +30,8 @@ func getGoodUsers()  {
 
 		//同步外网ip
 		SyncIp()
+		//请求签到
+		Sign()
 
 		time.Sleep(30 * time.Minute)
 	}
