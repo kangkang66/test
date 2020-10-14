@@ -30,6 +30,9 @@ func RunGin()  {
 				"height":info.Basicinfo.Height,
 				"weight":info.Basicinfo.Weight,
 				"intro":intro,
+				"position":info.Basicinfo.Position,
+				"company":info.Basicinfo.Company,
+				"school":info.Basicinfo.Highestschool,
 			})
 		}
 		c.HTML(200, "users.html",gin.H{
@@ -63,7 +66,7 @@ func RunGin()  {
 	r.GET("/vistors", func(c *gin.Context) {
 		resp := GetVisitors()
 		c.HTML(200, "visitors.html",gin.H{
-			"visitors": resp,
+			"visitors": resp.Data.Visitors,
 		})
 	})
 

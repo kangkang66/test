@@ -117,7 +117,7 @@ func RedisSetIp(newIp string) (oldIp string, err error) {
 }
 
 func RedisGetToken() (token string) {
-	token = RedisClient.Get("token").String()
+	token,_ = RedisClient.Get("token").Result()
 	return
 }
 
