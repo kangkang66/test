@@ -84,7 +84,7 @@ func sendRequest(method string, path string,  postData string) (content []byte,e
 	req.Header.Set("content-type","application/json")
 	req.Header.Set("platform","weapp")
 	req.Header.Set("referer","https://servicewechat.com/wxdbf2b50ca37c30c0/172/page-frame.html")
-	req.Header.Set("token","dogerProd eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0MDY0NjUiLCJ1aWQiOiIyMDA3OTgxMTIwNyIsImV4cCI6MTYwMjYwMzIwMX0.sA8HCqXdN1potT055pQa2dPpfzicwGpVhXK4gLiT-Og")
+	req.Header.Set("token",RedisGetToken())
 
 
 	client := &http.Client{}

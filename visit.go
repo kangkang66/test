@@ -21,6 +21,5 @@ func GetVisitors() (resp *ResponseVistors) {
 		log.Println(err)
 		return
 	}
-	fmt.Println(resp.Data.Visitors)
 	return
 }

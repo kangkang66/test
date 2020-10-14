@@ -63,7 +63,21 @@ func RunGin()  {
 	r.GET("/vistors", func(c *gin.Context) {
 		resp := GetVisitors()
 		c.HTML(200, "visitors.html",gin.H{
-			"visitors": resp.Data.Visitors,
+			"visitors": resp,
+		})
+	})
+
+	r.GET("/token", func(c *gin.Context) {
+		token := c.Query("token")
+		if token == "" {
+			c.JSON(200, gin.H{
+				"error": "token empty",
+			})
+			return
+		}
+		err := RedisSetToken(token)
+		c.JSON(200, gin.H{
+			"error": err,
 		})
 	})
 
