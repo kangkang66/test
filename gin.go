@@ -84,6 +84,13 @@ func RunGin()  {
 		})
 	})
 
+	r.GET("/dao-wei/fav", func(c *gin.Context) {
+		users := DaoWeiClient.GetFavUser()
+		c.HTML(200, "dao_wei_fav_user.html",gin.H{
+			"users": users,
+		})
+	})
+
 
 	r.Run(":8081")
 }

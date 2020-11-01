@@ -285,3 +285,181 @@ type ResponseIp struct {
 	As          string  `json:"as"`
 	Query       string  `json:"query"`
 }
+
+type DaoWeiFavResponse struct {
+	Msg  string `json:"msg"`
+	Code int    `json:"code"`
+	Data []struct {
+		ID                string      `json:"id"`
+		Name              string      `json:"name"`
+		Avator            string      `json:"avator"`
+		QualificationType int         `json:"qualificationType"`
+		Sex               int         `json:"sex"`
+		LineState         int         `json:"lineState"`
+		AverageScore      float64         `json:"averageScore"`
+		CanBuyTime        interface{} `json:"canBuyTime"`
+		Title             string      `json:"title"`
+		Description       string      `json:"description"`
+		Lbs               []float64   `json:"lbs"`
+		Distance          float64     `json:"distance"`
+		EmployeeID        int         `json:"employeeId"`
+		TotalServiceCount int         `json:"totalServiceCount"`
+		Tags              []string    `json:"tags"`
+		FansNum           int         `json:"fansNum"`
+		HealthID          interface{} `json:"healthId"`
+		AgentType         int         `json:"agentType"`
+		IsHasShow         int         `json:"isHasShow"`
+		ServiceMeCount    interface{} `json:"serviceMeCount"`
+	} `json:"data"`
+}
+
+type DaoWeiUserInfoResp struct {
+	Msg  string `json:"msg"`
+	Code int    `json:"code"`
+	Data struct {
+		CityAreas []struct {
+			Code string `json:"code"`
+			Name string `json:"name"`
+		} `json:"cityAreas"`
+		ItemAddress interface{} `json:"itemAddress"`
+		User        struct {
+			ID                          string    `json:"id"`
+			IsVip                       int       `json:"isVip"`
+			IsTryOnVip                  int       `json:"isTryOnVip"`
+			CardNo                      int       `json:"cardNo"`
+			Ucode                       string    `json:"ucode"`
+			RecommendCode               string    `json:"recommendCode"`
+			Zone                        string    `json:"zone"`
+			Phone                       string    `json:"phone"`
+			State                       int       `json:"state"`
+			Cs                          int64     `json:"cs"`
+			Ms                          int64     `json:"ms"`
+			UserType                    int       `json:"userType"`
+			LineState                   int       `json:"lineState"`
+			LineStateSort               int       `json:"lineStateSort"`
+			IsOnline                    int       `json:"isOnline"`
+			IsOnlineTime                int64     `json:"isOnlineTime"`
+			OfflineTechnicianUserID     string    `json:"offlineTechnicianUserId"`
+			DescribeVerifyID            int       `json:"describeVerifyId"`
+			HealthID                    int       `json:"healthId"`
+			CityCode                    string    `json:"cityCode"`
+			Email                       string    `json:"email"`
+			TechnicianBlacklistID       int       `json:"technicianBlacklistId"`
+			Lbs                         []float64 `json:"lbs"`
+			ImSig                       string    `json:"imSig"`
+			Tags                        []string  `json:"tags"`
+			DirectlyResponsibleUserID   int       `json:"directlyResponsibleUserId"`
+			IsSyncDaoway                int       `json:"isSyncDaoway"`
+			TechnicianServiceProductIds string    `json:"technicianServiceProductIds"`
+			Wx                          struct {
+				WxNickname    interface{} `json:"wxNickname"`
+				Openid        interface{} `json:"openid"`
+				Unionid       interface{} `json:"unionid"`
+				OpenidApplet  interface{} `json:"openidApplet"`
+				UnionidApplet interface{} `json:"unionidApplet"`
+				OpenidTech    interface{} `json:"openidTech"`
+				UnionidTech   interface{} `json:"unionidTech"`
+				OpenidPublic  interface{} `json:"openidPublic"`
+				UnionidPublic interface{} `json:"unionidPublic"`
+			} `json:"wx"`
+			Money struct {
+				CAccountAmount          float64     `json:"cAccountAmount"`
+				LastRechargePresentRate float64     `json:"lastRechargePresentRate"`
+				TWithdrawAmount         float64 `json:"tWithdrawAmount"`
+				TIncomeAmount           float64     `json:"tIncomeAmount"`
+				TIncomeHistoryAmount    float64     `json:"tIncomeHistoryAmount"`
+				AllDiscountMoney        float64     `json:"allDiscountMoney"`
+			} `json:"money"`
+			Privacy struct {
+				Name               string `json:"name"`
+				IsSetWithdrawPwd   float64    `json:"isSetWithdrawPwd"`
+				IsAutomaticReceipt float64    `json:"isAutomaticReceipt"`
+				IsDepositPay       float64    `json:"isDepositPay"`
+				DepositAmount      float64    `json:"depositAmount"`
+			} `json:"privacy"`
+			Visible struct {
+				NickName              string      `json:"nickName"`
+				CardStartTime         interface{} `json:"cardStartTime"`
+				CardEndTime           interface{} `json:"cardEndTime"`
+				VipCardTime           interface{} `json:"vipCardTime"`
+				Avator                string      `json:"avator"`
+				Address               interface{} `json:"address"`
+				Remark                interface{} `json:"remark"`
+				Birthday              string      `json:"birthday"`
+				Sex                   int         `json:"sex"`
+				Surname               interface{} `json:"surname"`
+				EmployeeID            int         `json:"employeeId"`
+				Idcard                string      `json:"idcard"`
+				IsCertified           int         `json:"isCertified"`
+				CertifiedDenialReason interface{} `json:"certifiedDenialReason"`
+				QualificationType     int         `json:"qualificationType"`
+				PhotoURLThumbnail     interface{} `json:"photoUrlThumbnail"`
+				StartWorkYear         string      `json:"startWorkYear"`
+				IdcardPhotoURL        string      `json:"idcardPhotoUrl"`
+				Certifications        interface{} `json:"certifications"`
+				CertificationTitles   interface{} `json:"certificationTitles"`
+				Vlog                  interface{} `json:"vlog"`
+				Images                interface{} `json:"images"`
+				IsHasShow             int         `json:"isHasShow"`
+				ShowSeeType           interface{} `json:"showSeeType"`
+				ShowCommentType       interface{} `json:"showCommentType"`
+			} `json:"visible"`
+			Services struct {
+				Title                            string      `json:"title"`
+				TechnicianLevelID                int         `json:"technicianLevelId"`
+				AgentIncomeType                  interface{} `json:"agentIncomeType"`
+				RoyaltyPercent                   float64     `json:"royaltyPercent"`
+				AddClockPercent                  float64     `json:"addClockPercent"`
+				RewardPercent                    float64     `json:"rewardPercent"`
+				AverageScore                     float64         `json:"averageScore"`
+				FansNum                          int         `json:"fansNum"`
+				SumScore                         float64         `json:"sumScore"`
+				CountScore                       float64         `json:"countScore"`
+				TotalServiceCount                int         `json:"totalServiceCount"`
+				RefundPercent                    float64         `json:"refundPercent"`
+				IsNewTechnician                  interface{} `json:"isNewTechnician"`
+				RecommendRank                    interface{} `json:"recommendRank"`
+				DayRank                          int         `json:"dayRank"`
+				NationwideDayRank                int         `json:"nationwideDayRank"`
+				MonthRank                        int         `json:"monthRank"`
+				NationwideMonthRrank             interface{} `json:"nationwideMonthRrank"`
+				WeekRank                         int         `json:"weekRank"`
+				NationwideWeekRank               int         `json:"nationwideWeekRank"`
+				DayOrderNum                      int         `json:"dayOrderNum"`
+				NationwideDayOrderNum            int         `json:"nationwideDayOrderNum"`
+				MonthOrderNum                    int         `json:"monthOrderNum"`
+				NationwideMonthOrderNum          int         `json:"nationwideMonthOrderNum"`
+				WeekOrderNum                     int         `json:"weekOrderNum"`
+				NationwideWeekOrderNum           int         `json:"nationwideWeekOrderNum"`
+				Skills                           string      `json:"skills"`
+				Description                      string      `json:"description"`
+				CityPartnerUserID                string      `json:"cityPartnerUserId"`
+				CityPartnerRatio                 interface{} `json:"cityPartnerRatio"`
+				AvatorPending                    string      `json:"avatorPending"`
+				DescriptionPending               string      `json:"descriptionPending"`
+				CertificationsPending            interface{} `json:"certificationsPending"`
+				CertificationTitlesPending       interface{} `json:"certificationTitlesPending"`
+				VlogPending                      interface{} `json:"vlogPending"`
+				ImagesPending                    interface{} `json:"imagesPending"`
+				DescriptionUpdateInfoStatus      int         `json:"descriptionUpdateInfoStatus"`
+				UpdateInfoStatus                 int         `json:"updateInfoStatus"`
+				CertificationsUpdateInfoStatus   interface{} `json:"certificationsUpdateInfoStatus"`
+				VlogUpdateInfoStatus             interface{} `json:"vlogUpdateInfoStatus"`
+				ImagesUpdateInfoStatus           interface{} `json:"imagesUpdateInfoStatus"`
+				DescriptionUpdateRefuseReason    string      `json:"descriptionUpdateRefuseReason"`
+				UpdateRefuseReason               string      `json:"updateRefuseReason"`
+				CertificationsUpdateRefuseReason interface{} `json:"certificationsUpdateRefuseReason"`
+				VlogUpdateRefuseReason           interface{} `json:"vlogUpdateRefuseReason"`
+				ImagesUpdateRefuseReason         interface{} `json:"imagesUpdateRefuseReason"`
+			} `json:"services"`
+			Device struct {
+				DeviceToken        interface{} `json:"deviceToken"`
+				DeviceTokenService string      `json:"deviceTokenService"`
+				DeviceTokenWxsmall interface{} `json:"device_token_wxsmall"`
+				Os                 int         `json:"os"`
+			} `json:"device"`
+			AcceptPercent int `json:"acceptPercent"`
+			GoodPercent   int `json:"goodPercent"`
+		} `json:"user"`
+	} `json:"data"`
+}

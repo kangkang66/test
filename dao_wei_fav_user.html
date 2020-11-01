@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+
+<ul>
+    <li><a href="/good-users">查看优秀用户</a></li>
+    <li><a href="/vistors">查看浏览者</a></li>
+    <li><a href="/dao-wei/fav">到位</a></li>
+</ul>
+
+{{range .users}}
+    <table align="center" border="1">
+        <tr>
+            <td>照片</td>
+            <td>
+                {{range .photos}}
+                    <img src="{{.}}" width="200px" height="300px">
+                {{end}}
+            </td>
+        </tr>
+        <tr>
+            <td>姓名</td>
+            <td>{{.nickname}}</td>
+        </tr>
+        <tr>
+            <td>手机</td>
+            <td>{{.phone}}</td>
+        </tr>
+        <tr>
+            <td>生日</td>
+            <td>{{.birthday}}</td>
+        </tr>
+        <tr>
+            <td>收入</td>
+            <td>{{.money}}</td>
+        </tr>
+        <tr>
+            <td>介绍</td>
+            <td>{{.description}}</td>
+        </tr>
+    </table>
+
+{{end}}
+</body>
+</html>

@@ -125,3 +125,18 @@ func RedisSetToken(token string) error {
 	return RedisClient.Set("token", token, 0).Err()
 }
 
+func RedisDaoWeiGetUserInfo(uid string) (info []byte,err error) {
+	 info,err = RedisClient.Get("dw_uid_"+uid).Bytes()
+	 if err != nil {
+		log.Println("RedisSetIp",err)
+	 }
+	 return
+}
+
+func RedisDaoWeiSetUserInfo(uid string, info []byte)  {
+	err := RedisClient.Set("dw_uid_"+uid,info,0).Err()
+	if err != nil {
+		log.Println("RedisSetIp",err)
+	}
+	return
+}
